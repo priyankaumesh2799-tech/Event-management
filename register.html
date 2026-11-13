@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Event - Eventify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Eventify</span>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="my-events.html">My Events</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="events.html" class="btn btn-primary">Explore Events</a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Event Registration</h1>
+                <p>Complete your registration for the selected event</p>
+            </div>
+        </section>
+
+        <section class="registration-section">
+            <div class="container">
+                <div class="registration-grid">
+                    <div class="registration-form-container">
+                        <div class="event-summary" id="eventSummary">
+                            <div class="summary-image">
+                                <img id="summaryEventImg" src="" alt="Event">
+                            </div>
+                            <div class="summary-info">
+                                <h3 id="summaryEventTitle"></h3>
+                                <div class="summary-meta" id="summaryEventMeta"></div>
+                                <div class="summary-price" id="summaryEventPrice"></div>
+                            </div>
+                        </div>
+
+                        <form id="registrationForm" class="registration-form" novalidate>
+                            <div class="form-section">
+                                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name <span class="required">*</span></label>
+                                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                        <span class="error-message" id="fullNameError"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address <span class="required">*</span></label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                        <span class="error-message" id="emailError"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                                    <span class="error-message" id="phoneError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
+                                <div class="form-group">
+                                    <label for="eventSelect">Select Event <span class="required">*</span></label>
+                                    <select id="eventSelect" name="eventSelect" required>
+                                        <option value="">Choose an event...</option>
+                                    </select>
+                                    <span class="error-message" id="eventSelectError"></span>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="ticketQuantity">Number of Tickets <span class="required">*</span></label>
+                                        <div class="quantity-selector">
+                                            <button type="button" class="qty-btn" id="decreaseQty" aria-label="Decrease quantity">-</button>
+                                            <input type="number" id="ticketQuantity" name="ticketQuantity" value="1" min="1" max="10" required>
+                                            <button type="button" class="qty-btn" id="increaseQty" aria-label="Increase quantity">+</button>
+                                        </div>
+                                        <span class="error-message" id="ticketQuantityError"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ticketType">Ticket Type</label>
+                                        <select id="ticketType" name="ticketType">
+                                            <option value="standard">Standard</option>
+                                            <option value="vip">VIP</option>
+                                            <option value="early-bird">Early Bird</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3><i class="fas fa-credit-card"></i> Payment Summary</h3>
+                                <div class="payment-summary" id="paymentSummary">
+                                    <div class="summary-row">
+                                        <span>Ticket Price (per ticket)</span>
+                                        <span id="unitPrice">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Quantity</span>
+                                        <span id="qtyDisplay">1</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Service Fee</span>
+                                        <span>$2.50</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Total</span>
+                                        <span id="totalPrice">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-block btn-large" id="submitBtn">
+                                    <i class="fas fa-check"></i>
+                                    Submit Registration
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-block" id="cancelBtn">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="registration-sidebar">
+                        <div class="info-card">
+                            <h3><i class="fas fa-info-circle"></i> Registration Info</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Instant confirmation via email</li>
+                                <li><i class="fas fa-check"></i> E-tickets sent immediately</li>
+                                <li><i class="fas fa-check"></i> Secure payment processing</li>
+                                <li><i class="fas fa-check"></i> 24/7 customer support</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-shield-alt"></i> Secure Booking</h3>
+                            <p>Your payment information is encrypted and processed securely. We never store your credit card details.</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-undo"></i> Cancellation Policy</h3>
+                            <p>Free cancellation up to 48 hours before the event. Full refund processed within 5-7 business days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="success-modal" id="successModal" style="display: none;">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p>Your registration has been confirmed. A confirmation email with your e-tickets has been sent to <span id="confirmEmail"></span>.</p>
+                <div class="booking-reference">
+                    <strong>Booking Reference:</strong> <span id="bookingRef"></span>
+                </div>
+                <div class="modal-actions">
+                    <a href="my-events.html" class="btn btn-primary">View My Events</a>
+                    <a href="events.html" class="btn btn-outline">Browse More Events</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Eventify</span>
+                    </div>
+                    <p>Your gateway to unforgettable experiences. Discover, book, and enjoy the best events around you.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="my-events.html">My Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="events.html?category=music">Music & Concerts</a></li>
+                        <li><a href="events.html?category=tech">Technology</a></li>
+                        <li><a href="events.html?category=business">Business</a></li>
+                        <li><a href="events.html?category=arts">Arts & Culture</a></li>
+                        <li><a href="events.html?category=food">Food & Drink</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Event Street, City, State 12345</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> hello@eventify.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eventify. All rights reserved. Made with <i class="fas fa-heart"></i> for event lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/registration.js"></script>
+</body>
+</html>

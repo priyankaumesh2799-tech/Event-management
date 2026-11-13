@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Events - Eventify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Eventify</span>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="my-events.html" class="active">My Events</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="events.html" class="btn btn-primary">Explore Events</a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>My Events</h1>
+                <p>Manage your event registrations and bookings</p>
+            </div>
+        </section>
+
+        <section class="my-events-section">
+            <div class="container">
+                <div class="my-events-header">
+                    <h2>Your Registrations</h2>
+                    <a href="events.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Book More Events
+                    </a>
+                </div>
+
+                <div class="my-events-tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Upcoming</button>
+                    <button class="tab-btn" data-tab="past">Past Events</button>
+                    <button class="tab-btn" data-tab="cancelled">Cancelled</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="upcomingPane">
+                        <div class="events-list" id="upcomingEventsList"></div>
+                        <div class="empty-state" id="upcomingEmpty" style="display: none;">
+                            <i class="fas fa-calendar-plus"></i>
+                            <h3>No upcoming events</h3>
+                            <p>You haven't registered for any upcoming events yet.</p>
+                            <a href="events.html" class="btn btn-primary">Browse Events</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="pastPane">
+                        <div class="events-list" id="pastEventsList"></div>
+                        <div class="empty-state" id="pastEmpty" style="display: none;">
+                            <i class="fas fa-history"></i>
+                            <h3>No past events</h3>
+                            <p>Your past event history will appear here.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cancelledPane">
+                        <div class="events-list" id="cancelledEventsList"></div>
+                        <div class="empty-state" id="cancelledEmpty" style="display: none;">
+                            <i class="fas fa-calendar-times"></i>
+                            <h3>No cancelled events</h3>
+                            <p>Your cancelled registrations will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="confirm-modal" id="cancelConfirmModal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content confirm-modal-content">
+            <h3>Cancel Registration</h3>
+            <p>Are you sure you want to cancel your registration for <span id="cancelEventName"></span>?</p>
+            <p class="warning-text">This action cannot be undone. Your tickets will be released and refunded according to the event's cancellation policy.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelNoBtn">Keep Registration</button>
+                <button class="btn btn-danger" id="cancelYesBtn">Yes, Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Eventify</span>
+                    </div>
+                    <p>Your gateway to unforgettable experiences. Discover, book, and enjoy the best events around you.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="my-events.html">My Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="events.html?category=music">Music & Concerts</a></li>
+                        <li><a href="events.html?category=tech">Technology</a></li>
+                        <li><a href="events.html?category=business">Business</a></li>
+                        <li><a href="events.html?category=arts">Arts & Culture</a></li>
+                        <li><a href="events.html?category=food">Food & Drink</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Event Street, City, State 12345</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> hello@eventify.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eventify. All rights reserved. Made with <i class="fas fa-heart"></i> for event lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/my-events.js"></script>
+</body>
+</html>
